@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name form</title>
+</head>
+<body>
+    <h1>enter your name</h1>
+
+    <input type="text id" id="name" placeholder="enter ypur name">
+    <input type="email" id="email" placeholder="enter your name">
+    <button onclick="showname()">submit</button>
+
+    <h2 id="result"></h2>
+    <script>
+        async function showname() {
+            let username = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+
+            const response = await fetch("/submit", {
+                method: "POST",
+                headers:{
+                        "content-Type":"application/json"
+                },
+                body: JSON.stringify({
+                    name:username,
+                    email:email
+                })
+            })
+            const data = await response.json();
+            document.getElementById("result").innerHTML=
+            data.message;
+        }
+    </script>
+</body>
+</html>
+
