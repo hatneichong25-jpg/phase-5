@@ -26,7 +26,7 @@ form.addEventListener("submit", async (event) => {
   askButton.textContent = "Please wait...";
 
   try {
-    const response = await fetch("/api/ask", {
+    const response = await fetch("https://phase-5-f06q.onrender.com/api/ask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
